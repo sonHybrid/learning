@@ -1,0 +1,47 @@
+[[template "header.html" .]]
+</head>
+
+<body>
+    <div class="container">
+        <div id="app">
+            <v-app>
+
+                <div>
+                    <br>
+                    <form @submit.prevent="checkForm" action="/addTodo" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name Todo" v-model="todo.name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Description" v-model="todo.description">
+                        </div>
+                        <button type="submit" class="btn btn-primary">add Todo</button>
+                    </form>
+                </div>
+                    {{todo}}
+                <br>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">#ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Done</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(todo,index) in listTodo" :key="index">
+                            <td scope="row">{{todo.ID}}</td>
+                            <td scope="row">{{todo.Name}}</td>
+                            <td scope="row">{{todo.Description}}</td>
+                            <td><input type="checkbox" :checked="todo.Done"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </v-app>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="assets/main.js"></script>
